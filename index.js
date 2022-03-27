@@ -12,7 +12,7 @@ const longitude = parseFloat(process.env.LONGITUDE);
 
     await new Promise(resolve => setTimeout(resolve, Math.round(Math.random() * 3000)));
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         slowMo: 20
     });
 
