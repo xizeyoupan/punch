@@ -1,0 +1,24 @@
+on:
+  schedule:
+    - cron: "0 23 * * *"
+
+jobs:
+  do:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+
+      - run: npm install
+
+      - run: node index.js
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          LOCATIONURL: ${{ secrets.LOCATIONURL }}
+          LOGINURL: ${{ secrets.LOGINURL }}
+          LATITUDE: ${{ secrets.LATITUDE }}
+          LONGITUDE: ${{ secrets.LONGITUDE }}
